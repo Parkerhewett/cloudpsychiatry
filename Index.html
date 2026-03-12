@@ -1,0 +1,693 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Psychiatry — Compassionate Mental Health Care</title>
+    <meta name="description" content="Cloud Psychiatry provides evidence-based psychiatric care in a warm, supportive environment. New and returning patients welcome.">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Page-specific hero styles -->
+    <style>
+        /* ── Home Hero ── */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(140deg, #E4EDE9 0%, #F5F7F5 50%, #EDF3F0 100%);
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -20%;
+                right: -10%;
+                width: 700px;
+                height: 700px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(122,155,142,0.14) 0%, transparent 70%);
+                pointer-events: none;
+            }
+
+            .hero::after {
+                content: '';
+                position: absolute;
+                bottom: -15%;
+                left: -5%;
+                width: 500px;
+                height: 500px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(184,149,106,0.08) 0%, transparent 70%);
+                pointer-events: none;
+            }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-sage);
+            background: rgba(122, 155, 142, 0.12);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.75rem, 5vw, 4.5rem);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+            .hero-title em {
+                font-style: italic;
+                background: linear-gradient(135deg, var(--primary-deep), var(--primary-sage));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.85;
+            font-weight: 300;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+            .hero-trust-item span:first-child {
+                color: var(--primary-sage);
+                font-size: 1rem;
+            }
+
+        .hero-visual {
+            position: relative;
+            height: 520px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .hero-image-frame {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(122, 155, 142, 0.12), rgba(184, 149, 106, 0.08));
+            border-radius: var(--radius-xl);
+            border: 2px dashed var(--neutral-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero-image-frame::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, var(--primary-sage), var(--accent-warm));
+                border-radius: 4px 4px 0 0;
+            }
+
+        .hero-image-placeholder-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+            .hero-image-placeholder-text strong {
+                display: block;
+                font-size: 2.5rem;
+                margin-bottom: 0.75rem;
+            }
+
+        /* Floating accent cards */
+        .hero-float-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            box-shadow: var(--shadow-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            z-index: 2;
+            border: 1px solid var(--neutral-mid);
+        }
+
+        .hero-float-card--1 {
+            bottom: 10%;
+            left: -8%;
+            animation: fadeInUp 0.7s 0.7s ease-out both;
+        }
+
+        .hero-float-card--2 {
+            top: 8%;
+            right: -5%;
+            animation: fadeInUp 0.7s 0.9s ease-out both;
+        }
+
+        .hero-float-card .dot {
+            width: 10px;
+            height: 10px;
+            background: var(--primary-sage);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── Welcome / Intro Section ── */
+        .welcome-section {
+            background: var(--white);
+        }
+
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .welcome-content h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--primary-deep);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .welcome-content p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.25rem;
+            font-size: 0.975rem;
+        }
+
+        .welcome-content .btn {
+            margin-top: 0.75rem;
+        }
+
+        .welcome-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+
+        .welcome-stat-card {
+            background: var(--neutral-light);
+            border: 1px solid var(--neutral-mid);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+            .welcome-stat-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-soft);
+            }
+
+            .welcome-stat-card.accent {
+                background: linear-gradient(135deg, var(--primary-deep), var(--primary-sage));
+                border-color: transparent;
+            }
+
+                .welcome-stat-card.accent .stat-number,
+                .welcome-stat-card.accent .stat-label {
+                    color: var(--white);
+                }
+
+                .welcome-stat-card.accent .stat-label {
+                    color: rgba(255,255,255,0.8);
+                }
+
+        /* ── Services Preview ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.75rem;
+        }
+
+        /* ── Why Choose Us ── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .why-card {
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--neutral-mid);
+            transition: var(--transition);
+            background: var(--neutral-light);
+        }
+
+            .why-card:hover {
+                border-color: var(--primary-light);
+                background: var(--white);
+                box-shadow: var(--shadow-soft);
+                transform: translateY(-4px);
+            }
+
+        .why-card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-deep);
+            margin-bottom: 0.6rem;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        /* ── Portal Preview ── */
+        .portal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .welcome-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .portal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .welcome-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════ HEADER ══════════════ -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">☁</div>
+                <div class="logo-text">
+                    Cloud Psychiatry
+                    <span>Mental Health Care</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#portal">Patient Portal</a></li>
+                <li><a href="index.html#new-patients">New Patients</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ══════════════ HERO ══════════════ -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">☁ Cloud Psychiatry</div>
+                <h1 class="hero-title">
+                    Compassionate Care<br>
+                    for <em>Mental Wellness</em>
+                </h1>
+                <p class="hero-subtitle">
+                    Evidence-based psychiatric services delivered in a warm, supportive environment. We're here to help you navigate your journey to better mental health — at every step.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portal" class="btn btn--primary">Returning Patient Portal →</a>
+                    <a href="#new-patients" class="btn btn--secondary">New Patient? Start Here</a>
+                </div>
+                <div class="hero-trust">
+                    <div class="hero-trust-item"><span>✓</span> HIPAA Compliant</div>
+                    <div class="hero-trust-item"><span>✓</span> Telehealth Available</div>
+                    <div class="hero-trust-item"><span>✓</span> Most Insurance Accepted</div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-image-frame">
+                    <div class="hero-image-placeholder-text">
+                        <strong>🌿</strong>
+                        Replace with a professional clinic photo<br>or calming mental health imagery
+                    </div>
+                </div>
+                <div class="hero-float-card hero-float-card--1">
+                    <div class="dot"></div>
+                    Accepting New Patients
+                </div>
+                <div class="hero-float-card hero-float-card--2">
+                    <span>📅</span>
+                    Same-Week Appointments
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ WELCOME / ABOUT PREVIEW ══════════════ -->
+    <section class="section welcome-section fade-in-section">
+        <div class="container">
+            <div class="welcome-grid">
+                <div class="welcome-content">
+                    <div class="section-tag">About Us</div>
+                    <h2>Welcome to Cloud Psychiatry</h2>
+                    <p>We provide comprehensive psychiatric care with a focus on personalized treatment and holistic wellbeing. Our experienced clinician is dedicated to helping you achieve mental wellness through evidence-based practices and compassionate support.</p>
+                    <p>Whether you're seeking medication management, therapy, or a comprehensive psychiatric evaluation, we are here to support you at every step — with empathy, expertise, and respect for your unique journey.</p>
+                    <a href="about.html" class="btn btn--primary">Meet Our Provider →</a>
+                </div>
+                <div class="welcome-stats">
+                    <div class="welcome-stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="welcome-stat-card accent">
+                        <div class="stat-number">2,000+</div>
+                        <div class="stat-label">Patients Served</div>
+                    </div>
+                    <div class="welcome-stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="welcome-stat-card">
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Patient Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ SERVICES PREVIEW ══════════════ -->
+    <section id="services" class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">What We Offer</div>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive psychiatric care tailored to your individual needs and goals</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>Psychiatric Evaluations</h3>
+                    <p>Comprehensive assessments to understand your mental health needs and develop a personalized treatment plan.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💊</div>
+                    <h3>Medication Management</h3>
+                    <p>Expert guidance on psychiatric medications, monitoring, and adjustments to optimize your care.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💭</div>
+                    <h3>Therapy & Counseling</h3>
+                    <p>Evidence-based psychotherapy including CBT, DBT, and supportive counseling tailored to you.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>Anxiety & Depression</h3>
+                    <p>Specialized care for mood disorders with integrated medication and therapeutic approaches.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>ADHD Evaluation & Treatment</h3>
+                    <p>Comprehensive ADHD assessment and evidence-based treatment for children and adults.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Trauma-Focused Care</h3>
+                    <p>Specialized trauma-informed treatment to help you heal and move forward with your life.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="services.html" class="btn btn--secondary">View All Services →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ WHY CHOOSE US ══════════════ -->
+    <section class="section section--alt fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Our Approach</div>
+                <h2 class="section-title">Why Patients Choose Us</h2>
+                <p class="section-subtitle">We combine clinical expertise with genuine human connection</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-card-icon">🤝</div>
+                    <h3>Personalized Care</h3>
+                    <p>Every treatment plan is tailored to your unique history, goals, and lifestyle — not a one-size-fits-all approach.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">💻</div>
+                    <h3>Telehealth Available</h3>
+                    <p>Access quality psychiatric care from the comfort of your own home through our secure telehealth platform.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">🔒</div>
+                    <h3>HIPAA-Secure</h3>
+                    <p>Your privacy is our priority. All records, communications, and patient data are fully HIPAA-compliant.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-icon">📋</div>
+                    <h3>Insurance-Friendly</h3>
+                    <p>We accept most major insurance plans and will work with you to understand your coverage and benefits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PATIENT PORTAL ══════════════ -->
+    <section id="portal" class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Patient Access</div>
+                <h2 class="section-title">Your Care, Your Way</h2>
+                <p class="section-subtitle">Secure, HIPAA-compliant access to your records, appointments, and care team</p>
+            </div>
+
+            <div class="portal-grid">
+                <div class="portal-card">
+                    <div class="portal-icon">🔐</div>
+                    <h3>Returning Patients</h3>
+                    <p>Access your secure patient portal to view appointments, medical records, and communicate with your care team.</p>
+                    <a href="#" class="btn btn--primary" onclick="alert('Redirects to your HIPAA-compliant patient portal (e.g., SimplePractice, Charm, Athena)')">Go to Patient Portal →</a>
+                </div>
+                <div class="portal-card" id="new-patients">
+                    <div class="portal-icon">✨</div>
+                    <h3>New Patients</h3>
+                    <p>Start your journey to better mental health. Complete our secure intake forms to schedule your first appointment.</p>
+                    <a href="#" class="btn btn--primary" onclick="alert('Redirects to your new patient registration system')">New Patient Registration →</a>
+                </div>
+            </div>
+
+            <div class="info-box" style="max-width: 860px; margin: 2.5rem auto 0;">
+                <h4>📋 What to Prepare for Your First Visit</h4>
+                <ul>
+                    <li>Insurance card and a valid photo ID</li>
+                    <li>A list of current medications and dosages</li>
+                    <li>Relevant past medical and psychiatric history</li>
+                    <li>Any questions or concerns you'd like to discuss</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact" class="section contact-section fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Reach Us</div>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We're here to answer your questions and help you get started</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+                            <p class="note">Mon–Fri: 9:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@cloudpsychiatry.com">info@cloudpsychiatry.com</a></p>
+                            <p class="note">General inquiries only — no PHI via email</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>123 Wellness Avenue, Suite 200<br>Cityville, ST 12345</p>
+                            <p class="note"><a href="#">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🚨</div>
+                        <div class="contact-details">
+                            <h4>Crisis Support</h4>
+                            <p class="contact-crisis">If you're experiencing a mental health emergency, please call 911 or go to your nearest emergency room.</p>
+                            <p class="note">988 Suicide &amp; Crisis Lifeline: <a href="tel:988">988</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="map-panel">
+                        <div class="map-panel-placeholder">
+                            <div style="font-size: 3rem;">🗺️</div>
+                            <p>Google Maps embed goes here<br><a href="#" style="color: var(--primary-sage); font-weight: 500;">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="hours-card">
+                        <h4>🕐 Office Hours</h4>
+                        <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">9:00 AM – 5:00 PM</span></div>
+                        <div class="hours-row"><span class="day">Saturday</span><span class="time">By appointment only</span></div>
+                        <div class="hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>☁ Cloud Psychiatry</h3>
+                    <p>Providing compassionate, evidence-based psychiatric care to help you achieve mental wellness and live your fullest life.</p>
+                    <p>
+                        <strong style="color: rgba(255,255,255,0.75);">Office Hours:</strong><br>
+                        Monday – Friday: 9:00 AM – 5:00 PM<br>
+                        Saturday: By appointment only &nbsp;|&nbsp; Sunday: Closed
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#portal">Patient Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Patient Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#new-patients">New Patients</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Insurance &amp; Billing</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">📞 <a href="tel:5551234567">(555) 123-4567</a></div>
+                    <div class="footer-contact-item">✉️ <a href="mailto:info@cloudpsychiatry.com">info@cloudpsychiatry.com</a></div>
+                    <div class="footer-contact-item">📍 123 Wellness Avenue, Suite 200<br>&nbsp;&nbsp;&nbsp;&nbsp;Cityville, ST 12345</div>
+                    <div class="footer-contact-item">🚨 Crisis Line: <a href="tel:988">988</a></div>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This website provides general information about our psychiatric services and does not constitute medical advice. For medical emergencies, please call 911. All patient information is handled through our secure, HIPAA-compliant patient portal. Communications through this website should not include protected health information (PHI).
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cloud Psychiatry. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a> &nbsp;|&nbsp; <a href="#">Accessibility</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

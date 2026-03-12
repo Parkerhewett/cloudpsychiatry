@@ -1,0 +1,739 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — Cloud Psychiatry</title>
+    <meta name="description" content="Explore the full range of psychiatric services offered at Cloud Psychiatry — from evaluations and medication management to therapy and trauma care.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Services-page–specific styles ── */
+
+        /* Services intro strip */
+        .services-intro {
+            background: var(--white);
+        }
+
+        .intro-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .intro-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(122,155,142,0.1);
+            color: var(--primary-deep);
+            border: 1px solid rgba(122,155,142,0.25);
+            border-radius: 50px;
+            padding: 0.45rem 1.1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: default;
+            transition: var(--transition);
+        }
+
+            .intro-pill:hover {
+                background: rgba(122,155,142,0.2);
+            }
+
+        /* ── Service Detail Cards ── */
+        .service-detail-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .service-detail-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--neutral-mid);
+            box-shadow: var(--shadow-soft);
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            gap: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+            .service-detail-card:hover {
+                box-shadow: var(--shadow-medium);
+                transform: translateY(-3px);
+                border-color: var(--primary-light);
+            }
+
+        .service-detail-accent {
+            background: linear-gradient(180deg, var(--primary-sage), var(--primary-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .service-detail-body {
+            padding: 2rem 2.25rem;
+        }
+
+            .service-detail-body h3 {
+                font-size: 1.55rem;
+                color: var(--primary-deep);
+                margin-bottom: 0.75rem;
+            }
+
+            .service-detail-body > p {
+                color: var(--text-secondary);
+                line-height: 1.85;
+                margin-bottom: 1.25rem;
+                font-size: 0.95rem;
+            }
+
+        .service-detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.25rem;
+        }
+
+        .service-meta-tag {
+            background: rgba(122,155,142,0.1);
+            color: var(--primary-deep);
+            border: 1px solid rgba(122,155,142,0.2);
+            border-radius: 50px;
+            padding: 0.25rem 0.8rem;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        /* ── Conditions Grid ── */
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .condition-pill {
+            background: var(--white);
+            border: 1px solid var(--neutral-mid);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+            .condition-pill:hover {
+                border-color: var(--primary-light);
+                color: var(--primary-deep);
+                background: rgba(122,155,142,0.05);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-soft);
+            }
+
+            .condition-pill span {
+                font-size: 1.15rem;
+            }
+
+        /* ── Insurance Section ── */
+        .insurance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .insurance-badge {
+            background: var(--white);
+            border: 1px solid var(--neutral-mid);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+            .insurance-badge:hover {
+                border-color: var(--primary-sage);
+                color: var(--primary-deep);
+            }
+
+        /* ── FAQ ── */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid var(--neutral-mid);
+            border-radius: var(--radius-md);
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+            .faq-item:hover {
+                border-color: var(--primary-light);
+            }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--primary-deep);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+
+            .faq-question:hover {
+                background: rgba(122,155,142,0.04);
+            }
+
+            .faq-question.open {
+                border-bottom: 1px solid var(--neutral-mid);
+            }
+
+        .faq-chevron {
+            transition: transform 0.3s ease;
+            color: var(--primary-sage);
+            flex-shrink: 0;
+        }
+
+        .faq-question.open .faq-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 1.25rem 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.85;
+        }
+
+            .faq-answer.open {
+                display: block;
+            }
+
+        /* ── CTA Banner (reused) ── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-sage) 100%);
+            border-radius: var(--radius-xl);
+            padding: 4rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-banner::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -10%;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.05);
+            }
+
+            .cta-banner h2 {
+                color: var(--white);
+                font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+                margin-bottom: 1rem;
+                position: relative;
+            }
+
+            .cta-banner p {
+                color: rgba(255,255,255,0.85);
+                font-size: 1.05rem;
+                margin-bottom: 2.5rem;
+                max-width: 540px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.8;
+                position: relative;
+            }
+
+            .cta-banner .btn-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                position: relative;
+            }
+
+        @media (max-width: 768px) {
+            .service-detail-card {
+                grid-template-columns: 1fr;
+            }
+
+            .service-detail-accent {
+                min-height: 64px;
+            }
+
+            .cta-banner {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════ HEADER ══════════════ -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">☁</div>
+                <div class="logo-text">
+                    Cloud Psychiatry
+                    <span>Mental Health Care</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#portal">Patient Portal</a></li>
+                <li><a href="index.html#new-patients">New Patients</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ══════════════ PAGE HERO ══════════════ -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__tag">What We Offer</div>
+            <h1 class="page-hero__title">Our Services</h1>
+            <p class="page-hero__subtitle">Comprehensive, evidence-based psychiatric care tailored to you. From evaluation to ongoing treatment, we're here every step of the way.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════ SERVICES INTRO ══════════════ -->
+    <section class="section services-intro fade-in-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2 class="section-title">A Full Spectrum of Care</h2>
+                <p class="section-subtitle">We offer a range of psychiatric services designed to meet you where you are and help you get where you want to go.</p>
+            </div>
+            <div class="intro-pills">
+                <span class="intro-pill">🧠 Psychiatric Evaluation</span>
+                <span class="intro-pill">💊 Medication Management</span>
+                <span class="intro-pill">💭 Talk Therapy</span>
+                <span class="intro-pill">🌟 Anxiety &amp; Depression</span>
+                <span class="intro-pill">⚡ ADHD</span>
+                <span class="intro-pill">🛡️ Trauma &amp; PTSD</span>
+                <span class="intro-pill">🌙 Sleep Disorders</span>
+                <span class="intro-pill">💻 Telehealth</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ SERVICE DETAILS ══════════════ -->
+    <section class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Service Details</div>
+                <h2 class="section-title">What to Expect</h2>
+                <p class="section-subtitle">Each service is described in detail below so you know exactly what to expect when you walk through our doors</p>
+            </div>
+
+            <div class="service-detail-grid">
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">🧠</div>
+                    <div class="service-detail-body">
+                        <h3>Psychiatric Evaluation</h3>
+                        <p>Your first visit begins with a comprehensive psychiatric evaluation. During this 60–90 minute session, we take the time to understand your full history — medical, psychiatric, family, and social — to build an accurate picture of your mental health. We review symptoms, prior treatments, and your personal goals to create a thoughtful, individualized plan.</p>
+                        <p>This evaluation serves as the foundation of all care that follows. You'll leave with a clear diagnosis (when applicable), a treatment plan, and a roadmap for next steps.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Initial Visit</span>
+                            <span class="service-meta-tag">60–90 min</span>
+                            <span class="service-meta-tag">In-person &amp; Telehealth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">💊</div>
+                    <div class="service-detail-body">
+                        <h3>Medication Management</h3>
+                        <p>For patients who may benefit from psychiatric medication, we provide ongoing medication management with close attention to efficacy, side effects, and overall wellbeing. We take a conservative, collaborative approach — explaining every option, answering every question, and always prioritizing the lowest effective dose.</p>
+                        <p>Follow-up visits are scheduled regularly to monitor progress and make adjustments as needed. We never "set it and forget it" — your response to medication is continuously evaluated.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Follow-Up Visits</span>
+                            <span class="service-meta-tag">20–30 min</span>
+                            <span class="service-meta-tag">In-person &amp; Telehealth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">💭</div>
+                    <div class="service-detail-body">
+                        <h3>Talk Therapy &amp; Psychotherapy</h3>
+                        <p>We offer evidence-based psychotherapy approaches including Cognitive Behavioral Therapy (CBT), Dialectical Behavior Therapy (DBT), Mindfulness-Based Cognitive Therapy (MBCT), and supportive counseling. Therapy is available as a standalone service or in combination with medication management.</p>
+                        <p>Our therapeutic relationships are built on trust, confidentiality, and genuine partnership. Whether you're working through a life transition, managing a chronic condition, or just feeling stuck, therapy provides a structured space to grow and heal.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Individual Therapy</span>
+                            <span class="service-meta-tag">45–60 min</span>
+                            <span class="service-meta-tag">CBT · DBT · MBCT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">🌟</div>
+                    <div class="service-detail-body">
+                        <h3>Anxiety &amp; Depression Treatment</h3>
+                        <p>Anxiety and depression are among the most common mental health conditions, yet they are highly treatable. We specialize in integrated care for mood disorders, combining medication management (when appropriate) with evidence-based therapeutic approaches. Our goal is not just symptom relief — it's sustained recovery and a better quality of life.</p>
+                        <p>We treat generalized anxiety disorder (GAD), panic disorder, social anxiety, major depressive disorder (MDD), persistent depressive disorder (PDD), and related conditions.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Mood Disorders</span>
+                            <span class="service-meta-tag">Anxiety</span>
+                            <span class="service-meta-tag">Depression</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">⚡</div>
+                    <div class="service-detail-body">
+                        <h3>ADHD Evaluation &amp; Treatment</h3>
+                        <p>Attention-Deficit/Hyperactivity Disorder (ADHD) affects both children and adults, often going undiagnosed for years. We offer comprehensive ADHD assessments that include clinical interviews, behavioral rating scales, and collateral history to confirm the diagnosis. Treatment options include medication, behavioral strategies, and skill-building for organization, focus, and emotional regulation.</p>
+                        <p>We also support adults who were diagnosed in childhood and are navigating ADHD in the context of demanding careers, relationships, and responsibilities.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Adults &amp; Adolescents</span>
+                            <span class="service-meta-tag">Diagnostic Testing</span>
+                            <span class="service-meta-tag">Stimulant &amp; Non-Stimulant Options</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">🛡️</div>
+                    <div class="service-detail-body">
+                        <h3>Trauma-Focused Care &amp; PTSD</h3>
+                        <p>Trauma can take many forms — and healing from it requires a safe, specialized approach. We provide trauma-informed psychiatric care and evidence-based treatments including Trauma-Focused CBT (TF-CBT), EMDR (Eye Movement Desensitization and Reprocessing), and Prolonged Exposure therapy for Post-Traumatic Stress Disorder (PTSD) and complex trauma.</p>
+                        <p>Our trauma care philosophy is built on safety, stabilization, and respect for your pace. You are always in control of your healing process.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">PTSD</span>
+                            <span class="service-meta-tag">Complex Trauma</span>
+                            <span class="service-meta-tag">EMDR Available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">🌙</div>
+                    <div class="service-detail-body">
+                        <h3>Sleep Disorders</h3>
+                        <p>Sleep and mental health are deeply interconnected. We evaluate and treat sleep disorders including insomnia, hypersomnia, circadian rhythm disruptions, and sleep difficulties related to anxiety, depression, or PTSD. Treatment may include Cognitive Behavioral Therapy for Insomnia (CBT-I), sleep hygiene coaching, and when appropriate, medication management.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Insomnia</span>
+                            <span class="service-meta-tag">CBT-I</span>
+                            <span class="service-meta-tag">Sleep &amp; Mood</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-detail-card">
+                    <div class="service-detail-accent">💻</div>
+                    <div class="service-detail-body">
+                        <h3>Telehealth Psychiatry</h3>
+                        <p>We offer secure, HIPAA-compliant telehealth appointments for most of our services. Whether you prefer the convenience of home-based care, live too far from our office, or have mobility challenges, telehealth brings the same quality psychiatric care directly to you via video visit. Most insurance plans cover telehealth services at the same rate as in-person visits.</p>
+                        <div class="service-detail-meta">
+                            <span class="service-meta-tag">Video Visit</span>
+                            <span class="service-meta-tag">HIPAA-Compliant</span>
+                            <span class="service-meta-tag">Most Insurance Accepted</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CONDITIONS TREATED ══════════════ -->
+    <section class="section section--alt fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Conditions</div>
+                <h2 class="section-title">Conditions We Treat</h2>
+                <p class="section-subtitle">We have experience treating a broad range of psychiatric conditions — if you don't see yours listed, please reach out</p>
+            </div>
+            <div class="conditions-grid">
+                <div class="condition-pill"><span>😰</span> Generalized Anxiety</div>
+                <div class="condition-pill"><span>😔</span> Major Depression</div>
+                <div class="condition-pill"><span>⚡</span> ADHD</div>
+                <div class="condition-pill"><span>🛡️</span> PTSD</div>
+                <div class="condition-pill"><span>🎭</span> Bipolar Disorder</div>
+                <div class="condition-pill"><span>😱</span> Panic Disorder</div>
+                <div class="condition-pill"><span>🧍</span> Social Anxiety</div>
+                <div class="condition-pill"><span>🌀</span> OCD</div>
+                <div class="condition-pill"><span>🌙</span> Insomnia</div>
+                <div class="condition-pill"><span>🍽️</span> Eating Disorders</div>
+                <div class="condition-pill"><span>🔄</span> Persistent Depression</div>
+                <div class="condition-pill"><span>💊</span> Substance Use</div>
+                <div class="condition-pill"><span>🧩</span> Autism Spectrum</div>
+                <div class="condition-pill"><span>👶</span> Postpartum Mood</div>
+                <div class="condition-pill"><span>🌿</span> Grief &amp; Loss</div>
+                <div class="condition-pill"><span>🔥</span> Burnout &amp; Stress</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ INSURANCE ══════════════ -->
+    <section class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Coverage</div>
+                <h2 class="section-title">Insurance &amp; Payment</h2>
+                <p class="section-subtitle">We accept most major insurance plans. Contact us to verify your benefits before your first appointment.</p>
+            </div>
+            <div class="insurance-grid">
+                <div class="insurance-badge">Aetna</div>
+                <div class="insurance-badge">BlueCross BlueShield</div>
+                <div class="insurance-badge">Cigna</div>
+                <div class="insurance-badge">United Healthcare</div>
+                <div class="insurance-badge">Humana</div>
+                <div class="insurance-badge">Medicaid</div>
+                <div class="insurance-badge">Medicare</div>
+                <div class="insurance-badge">Tricare</div>
+                <div class="insurance-badge">Self-Pay Available</div>
+                <div class="insurance-badge">HSA / FSA Accepted</div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.9rem;">Don't see your plan? <a href="#contact" style="color: var(--primary-sage); font-weight: 500;">Contact us</a> — we may still be in-network or offer competitive self-pay rates.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════ FAQ ══════════════ -->
+    <section class="section section--alt fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Common Questions</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Answers to the questions we hear most from new and prospective patients</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How do I get started as a new patient?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Getting started is simple. Click "New Patient Registration" from our navigation, complete the intake forms through our secure portal, and our team will reach out within 1–2 business days to schedule your first appointment. Most new patients are seen within one week.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Do you accept insurance?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes — we accept most major insurance plans including Aetna, BlueCross BlueShield, Cigna, United Healthcare, Humana, Medicaid, and Medicare. We also offer competitive self-pay rates. Contact us to verify your specific benefits before your visit.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Are telehealth appointments available?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes! We offer secure, HIPAA-compliant video appointments for most services. Telehealth visits are available to patients located in [State(s)]. Most insurance plans cover telehealth at the same rate as in-person appointments. You'll need a smartphone, tablet, or computer with a camera and internet connection.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        What should I bring to my first appointment?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Please bring a valid photo ID, your insurance card, a list of all current medications (including dosages and prescribing doctors), and any relevant past medical or psychiatric records. It's also helpful to jot down a few notes about what you'd like to discuss — no pressure, but it can make the most of your time with us.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        How long does each appointment last?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Your first (intake/evaluation) appointment is typically 60–90 minutes. Follow-up medication management visits are generally 20–30 minutes. Therapy sessions are 45–60 minutes. Appointment length may vary depending on your individual needs and care plan.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Is my information kept confidential?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutely. Your privacy is protected by federal HIPAA law, and we take that responsibility seriously. All patient records, communications, and appointment data are handled through our secure, HIPAA-compliant platform. We will never share your information without your explicit written consent, except where required by law.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CTA ══════════════ -->
+    <section class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="cta-banner">
+                <h2>Ready to Get Started?</h2>
+                <p>We're accepting new patients and would be honored to support your mental health journey. Reach out today — it only takes a moment.</p>
+                <div class="btn-group">
+                    <a href="index.html#new-patients" class="btn btn--ghost">New Patient Registration →</a>
+                    <a href="#contact" class="btn" style="background: var(--white); color: var(--primary-deep); border: none;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact" class="section contact-section fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Reach Us</div>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Questions about a specific service? We're happy to help</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+                            <p class="note">Mon–Fri: 9:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@cloudpsychiatry.com">info@cloudpsychiatry.com</a></p>
+                            <p class="note">General inquiries only — no PHI via email</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>123 Wellness Avenue, Suite 200<br>Cityville, ST 12345</p>
+                            <p class="note"><a href="#">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🚨</div>
+                        <div class="contact-details">
+                            <h4>Crisis Support</h4>
+                            <p class="contact-crisis">If you're experiencing a mental health emergency, please call 911 or go to your nearest emergency room.</p>
+                            <p class="note">988 Suicide &amp; Crisis Lifeline: <a href="tel:988">988</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="map-panel">
+                        <div class="map-panel-placeholder">
+                            <div style="font-size: 3rem;">🗺️</div>
+                            <p>Google Maps embed goes here<br><a href="#" style="color: var(--primary-sage); font-weight: 500;">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="hours-card">
+                        <h4>🕐 Office Hours</h4>
+                        <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">9:00 AM – 5:00 PM</span></div>
+                        <div class="hours-row"><span class="day">Saturday</span><span class="time">By appointment only</span></div>
+                        <div class="hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>☁ Cloud Psychiatry</h3>
+                    <p>Providing compassionate, evidence-based psychiatric care to help you achieve mental wellness and live your fullest life.</p>
+                    <p>
+                        <strong style="color: rgba(255,255,255,0.75);">Office Hours:</strong><br>
+                        Monday – Friday: 9:00 AM – 5:00 PM<br>
+                        Saturday: By appointment only &nbsp;|&nbsp; Sunday: Closed
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#portal">Patient Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Patient Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#new-patients">New Patients</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Insurance &amp; Billing</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">📞 <a href="tel:5551234567">(555) 123-4567</a></div>
+                    <div class="footer-contact-item">✉️ <a href="mailto:info@cloudpsychiatry.com">info@cloudpsychiatry.com</a></div>
+                    <div class="footer-contact-item">📍 123 Wellness Avenue, Suite 200<br>&nbsp;&nbsp;&nbsp;&nbsp;Cityville, ST 12345</div>
+                    <div class="footer-contact-item">🚨 Crisis Line: <a href="tel:988">988</a></div>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This website provides general information about our psychiatric services and does not constitute medical advice. For medical emergencies, please call 911. All patient information is handled through our secure, HIPAA-compliant patient portal. Communications through this website should not include protected health information (PHI).
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cloud Psychiatry. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a> &nbsp;|&nbsp; <a href="#">Accessibility</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+    function toggleFaq(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-question.open').forEach(q => {
+            q.classList.remove('open');
+            q.nextElementSibling.classList.remove('open');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+            btn.classList.add('open');
+            answer.classList.add('open');
+        }
+    }
+    </script>
+</body>
+</html>

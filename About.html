@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Cloud Psychiatry</title>
+    <meta name="description" content="Learn about Cloud Psychiatry, our provider, our philosophy, and our commitment to compassionate mental health care.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── About-specific styles ── */
+
+        /* Provider Bio Section */
+        .provider-grid {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .provider-photo-card {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .provider-photo-frame {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(145deg, rgba(122,155,142,0.15), rgba(184,149,106,0.1));
+            border-radius: var(--radius-xl);
+            border: 2px dashed var(--neutral-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+            .provider-photo-frame::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, var(--primary-sage), var(--accent-warm));
+            }
+
+            .provider-photo-frame .photo-icon {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+
+        .provider-credentials {
+            background: var(--white);
+            border: 1px solid var(--neutral-mid);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+            .provider-credentials h4 {
+                font-family: 'DM Sans', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin-bottom: 1.1rem;
+            }
+
+        .credential-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid var(--neutral-light);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+            .credential-item:last-child {
+                border-bottom: none;
+            }
+
+            .credential-item .badge {
+                background: rgba(122,155,142,0.12);
+                color: var(--primary-deep);
+                border-radius: 4px;
+                padding: 0.2rem 0.5rem;
+                font-size: 0.72rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                flex-shrink: 0;
+                margin-top: 1px;
+            }
+
+        /* Bio Content */
+        .provider-bio h2 {
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
+            color: var(--primary-deep);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .provider-bio .title {
+            font-size: 1rem;
+            color: var(--primary-sage);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            display: block;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .provider-bio p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.35rem;
+            font-size: 0.975rem;
+        }
+
+        .provider-bio blockquote {
+            border-left: 4px solid var(--primary-sage);
+            padding: 1.25rem 1.75rem;
+            margin: 2rem 0;
+            background: rgba(122,155,142,0.06);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            color: var(--primary-deep);
+            font-style: italic;
+            line-height: 1.55;
+        }
+
+        /* ── Philosophy Section ── */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .philosophy-card {
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--neutral-mid);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .philosophy-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, var(--primary-sage), var(--primary-deep));
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+                transform-origin: left;
+            }
+
+            .philosophy-card:hover::before {
+                transform: scaleX(1);
+            }
+
+            .philosophy-card:hover {
+                transform: translateY(-6px);
+                box-shadow: var(--shadow-medium);
+            }
+
+        .philosophy-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: rgba(122,155,142,0.2);
+            line-height: 1;
+            margin-bottom: 0.75rem;
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-deep);
+            margin-bottom: 0.75rem;
+        }
+
+        .philosophy-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* ── Practice Section ── */
+        .practice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .practice-content h2 {
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            color: var(--primary-deep);
+            margin-bottom: 1.25rem;
+        }
+
+        .practice-content p {
+            color: var(--text-secondary);
+            line-height: 1.9;
+            margin-bottom: 1.25rem;
+            font-size: 0.975rem;
+        }
+
+        .practice-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+            .practice-features li {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.6rem 0;
+                color: var(--text-secondary);
+                font-size: 0.925rem;
+                border-bottom: 1px solid var(--neutral-light);
+            }
+
+                .practice-features li:last-child {
+                    border-bottom: none;
+                }
+
+                .practice-features li::before {
+                    content: '✓';
+                    color: var(--primary-sage);
+                    font-weight: 700;
+                    flex-shrink: 0;
+                    font-size: 1rem;
+                }
+
+        .practice-visual {
+            background: linear-gradient(135deg, rgba(122,155,142,0.12), rgba(184,149,106,0.08));
+            border-radius: var(--radius-xl);
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--neutral-border);
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+            .practice-visual strong {
+                display: block;
+                font-size: 3rem;
+                margin-bottom: 0.75rem;
+            }
+
+        /* ── CTA Banner ── */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-sage) 100%);
+            border-radius: var(--radius-xl);
+            padding: 4rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-banner::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -10%;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.05);
+            }
+
+            .cta-banner h2 {
+                color: var(--white);
+                font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+                margin-bottom: 1rem;
+                position: relative;
+            }
+
+            .cta-banner p {
+                color: rgba(255,255,255,0.85);
+                font-size: 1.05rem;
+                margin-bottom: 2.5rem;
+                max-width: 540px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.8;
+                position: relative;
+            }
+
+            .cta-banner .btn-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                position: relative;
+            }
+
+        @media (max-width: 1024px) {
+            .provider-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .provider-photo-card {
+                position: static;
+                max-width: 420px;
+            }
+
+            .practice-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .practice-visual {
+                min-height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cta-banner {
+                padding: 3rem 2rem;
+            }
+
+            .provider-photo-frame {
+                aspect-ratio: 4/3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══════════════ HEADER ══════════════ -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">☁</div>
+                <div class="logo-text">
+                    Cloud Psychiatry
+                    <span>Mental Health Care</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="index.html#portal">Patient Portal</a></li>
+                <li><a href="index.html#new-patients">New Patients</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ══════════════ PAGE HERO ══════════════ -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero__tag">Our Story</div>
+            <h1 class="page-hero__title">About Cloud Psychiatry</h1>
+            <p class="page-hero__subtitle">Built on a foundation of empathy, evidence, and a deep belief that every person deserves compassionate mental health care.</p>
+        </div>
+    </section>
+
+    <!-- ══════════════ PROVIDER BIO ══════════════ -->
+    <section class="section section--alt fade-in-section">
+        <div class="container">
+            <div class="provider-grid">
+
+                <div class="provider-photo-card">
+                    <div class="provider-photo-frame">
+                        <span class="photo-icon">👩‍⚕️</span>
+                        Provider photo will go here<br>
+                        <small style="margin-top: 0.5rem; color: var(--text-muted);">Recommended: 3:4 ratio, professional headshot</small>
+                    </div>
+                    <div class="provider-credentials">
+                        <h4>Credentials &amp; Training</h4>
+                        <div class="credential-item">
+                            <span class="badge">MD</span> Board-Certified Psychiatrist
+                        </div>
+                        <div class="credential-item">
+                            <span class="badge">DEA</span> Licensed to Prescribe — State of [ST]
+                        </div>
+                        <div class="credential-item">
+                            <span class="badge">ABPN</span> American Board of Psychiatry &amp; Neurology
+                        </div>
+                        <div class="credential-item">
+                            <span class="badge">EDU</span> [Medical School Name] — M.D.
+                        </div>
+                        <div class="credential-item">
+                            <span class="badge">RES</span> Psychiatry Residency — [Hospital Name]
+                        </div>
+                        <div class="credential-item">
+                            <span class="badge">MEM</span> American Psychiatric Association
+                        </div>
+                    </div>
+                </div>
+
+                <div class="provider-bio">
+                    <div class="section-tag">Meet Your Provider</div>
+                    <h2>Dr. [Provider Name], MD</h2>
+                    <span class="title">Board-Certified Psychiatrist &amp; Founder, Cloud Psychiatry</span>
+
+                    <blockquote>
+                        "Healing begins when someone truly feels seen, heard, and understood. That is always my first commitment."
+                    </blockquote>
+
+                    <p>Dr. [Name] founded Cloud Psychiatry with a single, clear goal: to make expert psychiatric care accessible, personalized, and truly compassionate. With over 15 years of clinical experience, Dr. [Name] brings both rigorous medical training and a deeply human approach to every patient relationship.</p>
+
+                    <p>After completing a residency in psychiatry at [Hospital/University], Dr. [Name] has specialized in treating adults and adolescents navigating depression, anxiety, ADHD, trauma, bipolar disorder, and a wide range of other conditions. Their philosophy centers on treating the whole person — not just a diagnosis — and working collaboratively to design care plans that fit real lives.</p>
+
+                    <p>Outside the clinic, Dr. [Name] is passionate about reducing stigma around mental health, staying current with evolving research, and building a practice that reflects the diverse community it serves.</p>
+
+                    <a href="index.html#new-patients" class="btn btn--primary" style="margin-top: 0.75rem;">Schedule a First Appointment →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ PHILOSOPHY ══════════════ -->
+    <section class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Our Values</div>
+                <h2 class="section-title">Our Care Philosophy</h2>
+                <p class="section-subtitle">Four core principles guide everything we do at Cloud Psychiatry</p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-num">01</div>
+                    <h3>Evidence-Based Practice</h3>
+                    <p>Every treatment decision is grounded in current clinical research and proven therapeutic methods — not guesswork or trends.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-num">02</div>
+                    <h3>Whole-Person Care</h3>
+                    <p>Mental health doesn't exist in isolation. We consider your biology, environment, relationships, and goals together as one picture.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-num">03</div>
+                    <h3>Collaborative Partnership</h3>
+                    <p>You are an expert on your own life. We collaborate — not dictate — so that your voice shapes every step of your treatment.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-num">04</div>
+                    <h3>Accessible &amp; Inclusive</h3>
+                    <p>Quality psychiatric care should be available to everyone. We work hard to reduce barriers to access and welcome all backgrounds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ ABOUT THE PRACTICE ══════════════ -->
+    <section class="section section--alt fade-in-section">
+        <div class="container">
+            <div class="practice-grid">
+                <div class="practice-content">
+                    <div class="section-tag">The Practice</div>
+                    <h2>About Cloud Psychiatry</h2>
+                    <p>Cloud Psychiatry was established with the belief that mental health care should feel as approachable as it is effective. We've created an environment — both in-person and through telehealth — that prioritizes privacy, dignity, and ease of access.</p>
+                    <p>We serve adults and adolescents across a broad range of mental health concerns, from everyday stress and anxiety to complex psychiatric conditions requiring specialized medication management and therapeutic support.</p>
+                    <ul class="practice-features">
+                        <li>Board-certified psychiatric care</li>
+                        <li>In-person &amp; telehealth appointments available</li>
+                        <li>Most major insurance plans accepted</li>
+                        <li>HIPAA-compliant, secure patient portal</li>
+                        <li>Flexible scheduling including early/late slots</li>
+                        <li>New patients typically seen within one week</li>
+                    </ul>
+                    <a href="services.html" class="btn btn--secondary" style="margin-top: 0.75rem;">Explore Our Services →</a>
+                </div>
+                <div class="practice-visual">
+                    <div>
+                        <strong>🏥</strong>
+                        Clinic interior photo or<br>team photo goes here
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CTA ══════════════ -->
+    <section class="section fade-in-section" style="background: var(--neutral-light);">
+        <div class="container">
+            <div class="cta-banner">
+                <h2>Ready to Take the First Step?</h2>
+                <p>We're currently accepting new patients and would love to support your mental health journey. Reach out today — it only takes a minute to get started.</p>
+                <div class="btn-group">
+                    <a href="index.html#new-patients" class="btn btn--ghost">New Patient Registration →</a>
+                    <a href="#contact" class="btn" style="background: var(--white); color: var(--primary-deep); border: none;">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section id="contact" class="section contact-section fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Reach Us</div>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We're here to answer your questions and help you get started</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-panel">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+                            <p class="note">Mon–Fri: 9:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@cloudpsychiatry.com">info@cloudpsychiatry.com</a></p>
+                            <p class="note">General inquiries only — no PHI via email</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>123 Wellness Avenue, Suite 200<br>Cityville, ST 12345</p>
+                            <p class="note"><a href="#">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🚨</div>
+                        <div class="contact-details">
+                            <h4>Crisis Support</h4>
+                            <p class="contact-crisis">If you're experiencing a mental health emergency, please call 911 or go to your nearest emergency room.</p>
+                            <p class="note">988 Suicide &amp; Crisis Lifeline: <a href="tel:988">988</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="map-panel">
+                        <div class="map-panel-placeholder">
+                            <div style="font-size: 3rem;">🗺️</div>
+                            <p>Google Maps embed goes here<br><a href="#" style="color: var(--primary-sage); font-weight: 500;">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="hours-card">
+                        <h4>🕐 Office Hours</h4>
+                        <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">9:00 AM – 5:00 PM</span></div>
+                        <div class="hours-row"><span class="day">Saturday</span><span class="time">By appointment only</span></div>
+                        <div class="hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════ FOOTER ══════════════ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>☁ Cloud Psychiatry</h3>
+                    <p>Providing compassionate, evidence-based psychiatric care to help you achieve mental wellness and live your fullest life.</p>
+                    <p>
+                        <strong style="color: rgba(255,255,255,0.75);">Office Hours:</strong><br>
+                        Monday – Friday: 9:00 AM – 5:00 PM<br>
+                        Saturday: By appointment only &nbsp;|&nbsp; Sunday: Closed
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#portal">Patient Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Patient Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#new-patients">New Patients</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Insurance &amp; Billing</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <div class="footer-contact-item">📞 <a href="tel:5551234567">(555) 123-4567</a></div>
+                    <div class="footer-contact-item">✉️ <a href="mailto:info@cloudpsychiatry.com">info@cloudpsychiatry.com</a></div>
+                    <div class="footer-contact-item">📍 123 Wellness Avenue, Suite 200<br>&nbsp;&nbsp;&nbsp;&nbsp;Cityville, ST 12345</div>
+                    <div class="footer-contact-item">🚨 Crisis Line: <a href="tel:988">988</a></div>
+                </div>
+            </div>
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This website provides general information about our psychiatric services and does not constitute medical advice. For medical emergencies, please call 911. All patient information is handled through our secure, HIPAA-compliant patient portal. Communications through this website should not include protected health information (PHI).
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cloud Psychiatry. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a> &nbsp;|&nbsp; <a href="#">Accessibility</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
