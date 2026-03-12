@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Psychiatry - Compassionate Mental Health Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-sage: #7A9B8E;
+            --primary-deep: #4A6B5E;
+            --accent-warm: #B8956A;
+            --neutral-light: #F8F9F7;
+            --neutral-cream: #FAF8F5;
+            --neutral-mid: #E8EBE7;
+            --text-primary: #2C3E3A;
+            --text-secondary: #5A6B66;
+            --white: #FFFFFF;
+            --shadow-soft: 0 4px 20px rgba(74, 107, 94, 0.08);
+            --shadow-medium: 0 8px 30px rgba(74, 107, 94, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            background: var(--neutral-cream);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+
+        /* Header Navigation */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--primary-sage), var(--primary-deep));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-sage);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-deep);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #E8F0ED 0%, #F8F9F7 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="800" height="800" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(122,155,142,0.08)" stroke-width="1"/></pattern></defs><rect width="800" height="800" fill="url(%23grid)"/></svg>');
+            opacity: 0.4;
+            animation: slideIn 1.2s ease-out;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary-sage));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-sage), var(--primary-deep));
+            color: white;
+            box-shadow: 0 4px 15px rgba(122, 155, 142, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(122, 155, 142, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-deep);
+            border: 2px solid var(--primary-sage);
+        }
+
+        .btn-secondary:hover {
+            background: var(--neutral-light);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(122, 155, 142, 0.1), rgba(184, 149, 106, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+            border: 2px dashed var(--neutral-mid);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-alt {
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-deep);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-deep);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--neutral-light);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-sage);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            border: 1px solid var(--neutral-mid);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-sage), var(--primary-deep));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-deep);
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Portal Section */
+        .portal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .portal-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portal-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid var(--neutral-mid);
+            transition: all 0.3s ease;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-sage);
+        }
+
+        .portal-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-deep);
+        }
+
+        .portal-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .portal-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-sage), var(--primary-deep));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--primary-deep);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--neutral-mid);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--neutral-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-sage);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--primary-sage);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-deep);
+        }
+
+        .map-container {
+            background: var(--neutral-light);
+            border-radius: 16px;
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--neutral-mid);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-deep);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .disclaimer {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-medium);
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portal-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">◈</div>
+                <span class="logo-text">Cloud Psychiatry</span>
+            </a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portal">Patient Portal</a></li>
+                <li><a href="#new-patients">New Patients</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Compassionate Care for Mental Wellness</h1>
+                <p class="hero-subtitle">Evidence-based psychiatric services in a warm, supportive environment. We're here to help you navigate your journey to better mental health.</p>
+                <div class="hero-buttons">
+                    <a href="#portal" class="btn btn-primary">Returning Patient Portal →</a>
+                    <a href="#new-patients" class="btn btn-secondary">New Patient Start Here</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">
+                    [Professional clinic interior photo or calming mental health imagery will be placed here]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview Section -->
+    <section id="about" class="section section-alt fade-in-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Welcome to Harmony Psychiatry Center</h3>
+                    <p>We provide comprehensive psychiatric care with a focus on personalized treatment and holistic wellbeing. Our team of experienced clinicians is dedicated to helping you achieve mental wellness through evidence-based practices and compassionate support.</p>
+                    <p>Whether you're seeking medication management, therapy, or comprehensive psychiatric evaluation, we're here to support you every step of the way.</p>
+                    <a href="#about-full" class="btn btn-primary">Learn More About Our Practice</a>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2000+</div>
+                        <div class="stat-label">Patients Served</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Comprehensive psychiatric care tailored to your individual needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>Psychiatric Evaluations</h3>
+                    <p>Comprehensive assessments to understand your mental health needs and develop personalized treatment plans.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💊</div>
+                    <h3>Medication Management</h3>
+                    <p>Expert guidance on psychiatric medications, monitoring, and adjustments to optimize your treatment.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💭</div>
+                    <h3>Talk Therapy</h3>
+                    <p>Evidence-based psychotherapy approaches including CBT, DBT, and supportive counseling.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>Anxiety & Depression Treatment</h3>
+                    <p>Specialized care for mood disorders with integrated medication and therapeutic approaches.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>ADHD Evaluation & Treatment</h3>
+                    <p>Comprehensive ADHD assessment and evidence-based treatment for children and adults.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Trauma-Focused Care</h3>
+                    <p>Specialized trauma-informed treatment approaches to help you heal and move forward.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#services-full" class="btn btn-secondary">View All Services →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patient Portal Section -->
+    <section id="portal" class="section section-alt fade-in-section">
+        <div class="container">
+            <div class="portal-container">
+                <div class="section-header">
+                    <h2 class="section-title">Patient Access</h2>
+                    <p class="section-subtitle">Secure, HIPAA-compliant access to your care</p>
+                </div>
+                <div class="portal-cards">
+                    <div class="portal-card">
+                        <div class="portal-icon">🔐</div>
+                        <h3>Returning Patients</h3>
+                        <p>Access your secure patient portal to view appointments, medical records, and communicate with your care team.</p>
+                        <a href="#" class="btn btn-primary" onclick="alert('This would redirect to your secure HIPAA-compliant patient portal (e.g., Charm, SimplePractice, Athena, etc.)')">Go to Patient Portal →</a>
+                    </div>
+                    <div class="portal-card" id="new-patients">
+                        <div class="portal-icon">✨</div>
+                        <h3>New Patients</h3>
+                        <p>Start your journey to better mental health. Complete our secure intake forms to schedule your first appointment.</p>
+                        <a href="#" class="btn btn-primary" onclick="alert('This would redirect to your secure HIPAA-compliant new patient registration system')">New Patient Registration →</a>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(122, 155, 142, 0.1); border-radius: 12px; text-align: left;">
+                    <h4 style="margin-bottom: 1rem; color: var(--primary-deep);">📋 What to Prepare for Your First Visit:</h4>
+                    <ul style="color: var(--text-secondary); line-height: 2;">
+                        <li>Insurance card and photo ID</li>
+                        <li>List of current medications</li>
+                        <li>Relevant medical history</li>
+                        <li>Questions or concerns you'd like to discuss</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We're here to help answer your questions</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p><a href="tel:555-123-4567">(555) 123-4567</a></p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Mon-Fri: 9:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@harmonypsych.com">info@harmonypsych.com</a></p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">For general inquiries only (no PHI)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>123 Wellness Avenue, Suite 200<br>Cityville, ST 12345</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;"><a href="#" onclick="alert('This would open Google Maps directions')">Get Directions →</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🚨</div>
+                        <div class="contact-details">
+                            <h4>Crisis Support</h4>
+                            <p style="color: var(--primary-deep); font-weight: 500;">If you're experiencing a mental health emergency, please call 911 or visit your nearest emergency room.</p>
+                            <p style="font-size: 0.9rem; margin-top: 0.5rem;">988 Suicide & Crisis Lifeline: <a href="tel:988">988</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <p style="color: var(--text-secondary);">[Google Maps embed or "Get Directions" button would be placed here]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Harmony Psychiatry Center</h3>
+                    <p>Providing compassionate, evidence-based psychiatric care to help you achieve mental wellness and live your best life.</p>
+                    <p><strong>Office Hours:</strong><br>
+                    Monday - Friday: 9:00 AM - 5:00 PM<br>
+                    Saturday: By appointment only<br>
+                    Sunday: Closed</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portal">Patient Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Patient Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#new-patients">New Patients</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Insurance & Billing</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li>📞 (555) 123-4567</li>
+                        <li>✉️ info@harmonypsych.com</li>
+                        <li>📍 123 Wellness Avenue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Suite 200<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cityville, ST 12345</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>Disclaimer:</strong> This website provides general information about our psychiatric services and does not constitute medical advice. For medical emergencies, please call 911. All patient information is handled through our secure, HIPAA-compliant patient portal. Any communication through this website should not include protected health information (PHI).
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Harmony Psychiatry Center. All rights reserved. | <a href="#" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a> | <a href="#" style="color: rgba(255, 255, 255, 0.7);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(74, 107, 94, 0.15)';
+            } else {
+                header.style.boxShadow = '0 4px 20px rgba(74, 107, 94, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
