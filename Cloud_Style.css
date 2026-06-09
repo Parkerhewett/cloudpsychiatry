@@ -38,6 +38,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
     line-height: 1.7;
     background: var(--neutral-cream);
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* ── Typography ── */
@@ -875,7 +877,7 @@ img {
         right: 0;
         background: var(--white);
         flex-direction: column;
-        padding: 1.5rem 2rem;
+        padding: 1.5rem 1rem;
         box-shadow: var(--shadow-medium);
         gap: 0.25rem;
         border-top: 1px solid var(--neutral-mid);
@@ -895,7 +897,13 @@ img {
     }
 
     .section {
-        padding: 3.5rem 1.5rem;
+        padding: 3rem 1rem;
+    }
+
+    .container,
+    .container--wide {
+        padding: 0 1rem;
+        max-width: 100%;
     }
 
     .section-header {
@@ -912,7 +920,10 @@ img {
         text-align: center;
     }
 
-    .btn {
+    /* Don't force full-width on every button — only standalone ones */
+    .hero-buttons .btn,
+    .portal-card .btn,
+    .cta-banner .btn {
         width: 100%;
         justify-content: center;
     }
@@ -920,22 +931,59 @@ img {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Portal cards stack cleanly */
+    .portal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Service cards stack */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Why grid stacks */
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Welcome stats stay 2 col on mobile */
+    .welcome-stats {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (max-width: 480px) {
     .nav-container {
-        padding: 1rem;
+        padding: 0.875rem 1rem;
     }
 
     .logo-text {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .logo-text span {
+        display: none; /* hide subtitle on very small screens */
     }
 
     .page-hero {
-        padding: 4rem 1.5rem 3rem;
+        padding: 3.5rem 1rem 2.5rem;
     }
 
     .portal-card {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.25rem;
+    }
+
+    .contact-info-panel {
+        padding: 2rem 1.25rem;
+    }
+
+    .hours-card {
+        padding: 1.75rem 1.25rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
     }
 }
+ 
