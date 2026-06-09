@@ -557,8 +557,8 @@
                 <div class="portal-card" id="new-patients">
                     <div class="portal-icon">✨</div>
                     <h3>New Patients</h3>
-                    <p>Start your journey to better mental health. Complete our secure intake forms to schedule your first telehealth appointment.</p>
-                    <a href="#" class="btn btn--primary" onclick="alert('This will link to your AzaleaHealth new patient registration')">New Patient Registration →</a>
+                    <p>Ready to get started? Our AI assistant can walk you through the new patient process, answer your questions, and help you get registered — right now.</p>
+                    <button class="btn btn--primary" onclick="document.getElementById('newPatientModal').style.display='flex'">Get Started as a New Patient →</button>
                 </div>
             </div>
 
@@ -566,7 +566,7 @@
                 <h4>📋 What to Prepare for Your First Telehealth Visit</h4>
                 <ul>
                     <li>A device with a camera and stable internet connection (smartphone, tablet, or computer)</li>
-                    <li>Insurance card — Sarah will ask for this upon scheduling</li>
+                    <li>Your insurance information — please have this ready when completing your new patient registration</li>
                     <li>A list of all current medications and dosages</li>
                     <li>Relevant past medical and psychiatric history</li>
                     <li>Any questions or concerns you'd like to discuss</li>
@@ -591,7 +591,15 @@
                         <div class="contact-details">
                             <h4>Phone</h4>
                             <p><a href="tel:5012149450">(501) 214-9450</a></p>
-                            <p class="note">Call or text during business hours</p>
+                            <p class="note">Phone calls only — Mon–Fri, 9:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📠</div>
+                        <div class="contact-details">
+                            <h4>Fax</h4>
+                            <p>(501) 232-4247</p>
+                            <p class="note">For clinical documents and referrals only</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -706,6 +714,17 @@
             </div>
         </div>
     </footer>
+
+    <!-- New Patient Chatbot Modal -->
+    <div id="newPatientModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:9999; align-items:center; justify-content:center; padding:1.5rem;">
+        <div style="background:var(--white); border-radius:var(--radius-xl); padding:2.5rem; max-width:480px; width:100%; text-align:center; box-shadow:var(--shadow-strong); position:relative;">
+            <button onclick="document.getElementById('newPatientModal').style.display='none'" style="position:absolute; top:1rem; right:1.25rem; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted); line-height:1;">×</button>
+            <div style="font-size:3rem; margin-bottom:1rem;">💬</div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.75rem; color:var(--primary-deep); margin-bottom:0.75rem;">Chat With Our Assistant</h3>
+            <p style="color:var(--text-secondary); line-height:1.8; margin-bottom:1.75rem; font-size:0.95rem;">Our AI assistant can answer your questions and help you get started as a new patient. Just click the chat icon in the bottom-right corner of the screen to begin!</p>
+            <button onclick="document.getElementById('newPatientModal').style.display='none'" class="btn btn--primary" style="width:100%; justify-content:center;">Got it — Open the Chat →</button>
+        </div>
+    </div>
 
     <script src="main.js"></script>
     <script src="https://clients.doctorconnect.net/aria/widget/aria-widget-v5/widget-embed.js"
