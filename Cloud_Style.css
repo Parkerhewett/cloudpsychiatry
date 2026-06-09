@@ -38,7 +38,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 body {
@@ -46,8 +45,14 @@ body {
     color: var(--text-primary);
     line-height: 1.7;
     background: var(--neutral-cream);
-    overflow-x: hidden;
+    /* overflow-x on body alone breaks position:sticky on mobile;
+       handled instead with max-width on inner containers */
+}
+
+/* Prevent horizontal scroll without breaking sticky nav */
+.hero, .section, .page-hero, .footer, .header nav {
     max-width: 100vw;
+    overflow-x: clip;
 }
 
 /* ── Typography ── */
@@ -869,6 +874,13 @@ img {
 }
 
 @media (max-width: 768px) {
+    /* Keep nav pinned to top on mobile */
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -986,4 +998,3 @@ img {
         font-size: 1.75rem;
     }
 }
- 
