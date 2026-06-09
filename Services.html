@@ -678,7 +678,7 @@
                 <h2>Ready to Get Started?</h2>
                 <p>We're accepting new patients and would be honored to support your mental health journey. Reach out today — it only takes a moment.</p>
                 <div class="btn-group">
-                    <a href="index.html#new-patients" class="btn btn--ghost">New Patient Registration →</a>
+                    <button class="btn btn--ghost" onclick="document.getElementById('newPatientModal').style.display='flex'">Get Started as a New Patient →</button>
                     <a href="#contact" class="btn" style="background: var(--white); color: var(--primary-deep); border: none;">Contact Us</a>
                 </div>
             </div>
@@ -701,7 +701,15 @@
                         <div class="contact-details">
                             <h4>Phone</h4>
                             <p><a href="tel:5012149450">(501) 214-9450</a></p>
-                            <p class="note">Call or text during business hours</p>
+                            <p class="note">Phone calls only — Mon–Fri, 9:00 AM – 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📠</div>
+                        <div class="contact-details">
+                            <h4>Fax</h4>
+                            <p>(501) 232-4247</p>
+                            <p class="note">For clinical documents and referrals only</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -812,6 +820,17 @@
             </div>
         </div>
     </footer>
+
+    <!-- New Patient Chatbot Modal -->
+    <div id="newPatientModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:9999; align-items:center; justify-content:center; padding:1.5rem;">
+        <div style="background:var(--white); border-radius:var(--radius-xl); padding:2.5rem; max-width:480px; width:100%; text-align:center; box-shadow:var(--shadow-strong); position:relative;">
+            <button onclick="document.getElementById('newPatientModal').style.display='none'" style="position:absolute; top:1rem; right:1.25rem; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted); line-height:1;">×</button>
+            <div style="font-size:3rem; margin-bottom:1rem;">💬</div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.75rem; color:var(--primary-deep); margin-bottom:0.75rem;">Chat With Our Assistant</h3>
+            <p style="color:var(--text-secondary); line-height:1.8; margin-bottom:1.75rem; font-size:0.95rem;">Our AI assistant can answer your questions and help you get started as a new patient. Just click the chat icon in the bottom-right corner of the screen to begin!</p>
+            <button onclick="document.getElementById('newPatientModal').style.display='none'" class="btn btn--primary" style="width:100%; justify-content:center;">Got it — Open the Chat →</button>
+        </div>
+    </div>
 
     <script src="main.js"></script>
     <script src="https://clients.doctorconnect.net/aria/widget/aria-widget-v5/widget-embed.js"
