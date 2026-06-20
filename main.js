@@ -1,13 +1,13 @@
 /* ============================================================
    Cloud Psychiatry — Shared JavaScript (main.js)
    ============================================================ */
- 
+
 /* ── Mobile Menu ── */
 function toggleMobileMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');
 }
- 
+
 /* ── Close menu on outside click ── */
 document.addEventListener('click', function (e) {
     const nav = document.getElementById('navLinks');
@@ -16,7 +16,7 @@ document.addEventListener('click', function (e) {
         nav.classList.remove('active');
     }
 });
- 
+
 /* ── Header shadow on scroll ── */
 window.addEventListener('scroll', function () {
     const header = document.querySelector('.header');
@@ -24,7 +24,7 @@ window.addEventListener('scroll', function () {
         header.classList.toggle('scrolled', window.scrollY > 40);
     }
 });
- 
+
 /* ── Active nav link ── */
 (function setActiveNavLink() {
     const page = window.location.pathname.split('/').pop() || 'index.html';
@@ -38,7 +38,7 @@ window.addEventListener('scroll', function () {
         }
     });
 })();
- 
+
 /* ── Contact anchor smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -51,17 +51,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
- 
+
 /* ── Scroll Fade-in Animations ── */
 const observer = new IntersectionObserver(
     function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             }
         });
     },
     { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
 );
- 
+
 document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+
+/* Safety net: on some mobile browsers, edge-case layouts (clipping
+   contexts, fast initial scroll position, etc.) can prevent the
+   IntersectionObserver from ever firing for a section, leaving it
+   stuck at opacity:0 permanently. As a fallback, force every
+   fade-in-section visible shortly after load and on resize. */
+function revealAllFadeSections() {
+    document.querySelectorAll('.fade-in-section').forEach(el => {
+        el.classList.add('is-visible');
+    });
+}
+window.addEventListener('load', function () {
+    setTimeout(revealAllFadeSections, 1200);
+});
