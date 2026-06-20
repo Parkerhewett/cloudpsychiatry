@@ -135,14 +135,10 @@
             height: 100%;
             background: linear-gradient(135deg, rgba(122, 155, 142, 0.12), rgba(184, 149, 106, 0.08));
             border-radius: var(--radius-xl);
-            border: 2px dashed var(--neutral-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
+            border: 1px solid var(--neutral-border);
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-medium);
         }
 
             .hero-image-frame::before {
@@ -154,19 +150,19 @@
                 height: 4px;
                 background: linear-gradient(90deg, var(--primary-sage), var(--accent-warm));
                 border-radius: 4px 4px 0 0;
+                z-index: 2;
             }
 
-        .hero-image-placeholder-text {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
+        .hero-image-photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
-
-            .hero-image-placeholder-text strong {
-                display: block;
-                font-size: 2.5rem;
-                margin-bottom: 0.75rem;
-            }
 
         /* Floating accent cards */
         .hero-float-card {
@@ -397,7 +393,7 @@
                     Board-certified psychiatric medication management and evaluation — delivered entirely via secure telehealth. Serving adults 18+ in Arkansas and Oklahoma.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://sso.azaleahealth.com/ui/mhs/login?type=ambulatory&tenant=142692" class="btn btn--primary">Returning Patient Portal →</a>
+                    <a href="https://sso.azaleahealth.com/ui/mhs/login?type=ambulatory&tenant=142692" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Returning Patient Portal →</a>
                     <button class="btn btn--secondary" onclick="document.getElementById('newPatientModal').style.display='flex'">New Patient? Start Here</button>
                 </div>
                 <div class="hero-trust">
@@ -549,7 +545,7 @@
                     <div class="portal-icon">🔐</div>
                     <h3>Returning Patients</h3>
                     <p>Access your secure patient portal through AzaleaHealth to view appointments, medical records, and communicate with your care team.</p>
-                    <a href="https://sso.azaleahealth.com/ui/mhs/login?type=ambulatory&tenant=142692" class="btn btn--primary">Go to Patient Portal →</a>
+                    <a href="https://sso.azaleahealth.com/ui/mhs/login?type=ambulatory&tenant=142692" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Go to Patient Portal →</a>
                 </div>
                 <div class="portal-card" id="new-patients">
                     <div class="portal-icon">✨</div>
