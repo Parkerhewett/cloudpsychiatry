@@ -328,27 +328,27 @@
 </head>
 <body>
 
-    <!-- ══════════════ HEADER ══════════════ -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon"><img src="Cloud_Psych_Logo.jpg" alt="Cloud Psychiatric Care Logo"></div>
-                <div class="logo-text">
-                    Cloud Psychiatric Care
-                    <span>Telehealth &mdash; AR &amp; OK</span>
-                </div>
-            </a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="index.html#portal">Patient Portal</a></li>
-                <li><a href="index.html#new-patients">New Patients</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="header">
+    <nav class="nav-container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">☁</div>
+            <div class="logo-text">
+                Cloud Psychiatric Care
+                <span>Telehealth &mdash; AR &amp; OK</span>
+            </div>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="index.html#portal">Patient Portal</a></li>
+            <li><a href="index.html#new-patients">New Patients</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
     <!-- ══════════════ PAGE HERO ══════════════ -->
     <section class="page-hero">
@@ -696,6 +696,15 @@
                     </button>
                     <div class="faq-answer">
                         Absolutely. Your privacy is protected by federal HIPAA law, and we take that obligation seriously. All records, appointment data, and communications are handled through our secure, HIPAA-compliant AzaleaHealth platform. Your information will never be shared without your explicit written consent, except where required by law. Please note that the general contact email is for administrative inquiries only — do not send protected health information (PHI) via email.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Additional Questions?
+                        <span class="faq-chevron">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        If you have any additional questions, just ask the chatbot labeled "Talk To Us" in the bottom right hand corner to get you additional questions answered! 
                     </div>
                 </div>
             </div>
