@@ -38,7 +38,7 @@ I was responsible for the design, development, customization, and deployment of 
 ├── about.html          # Practice and provider information
 ├── services.html       # Services and treatment offerings
 ├── styles.css          # Site styling
-├── style.js          # Jave Script Design
+├── main.js             # Java Design functionality
 └── README.md
 ```
 
